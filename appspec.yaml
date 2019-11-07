@@ -6,4 +6,4 @@ Resources:
         TaskDefinition: <TASK_DEFINITION>
         LoadBalancerInfo:
           ContainerName: amplitude
-          ContainerPort: 8080
+          ContainerPort: 8088

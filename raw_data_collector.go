@@ -4,7 +4,7 @@ import (
 	"flag"
 	"net/http"
 	"time"
-	"github.com/aws/aws-sdk-go/aws/credentials/stscreds"
+	// "github.com/aws/aws-sdk-go/aws/credentials/stscreds"
 	kinesisproducer "github.com/a8m/kinesis-producer"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
@@ -17,7 +17,7 @@ import (
 
 
 var kinesis_producer *kinesisproducer.Producer
-var AWS_ARN string
+// var AWS_ARN string
 var qURL string
 var  svc *sqs.SQS
 
@@ -34,14 +34,14 @@ func init() {
 
 	flag.Parse()
 	ACCOUNT_ID := os.Getenv("ACCOUNT_ID")
-	ROLE_NAME := os.Getenv("ROLE_NAME")
+	// ROLE_NAME := os.Getenv("ROLE_NAME")
 	QUEUE_NAME := os.Getenv("QUEUE_NAME")
 	
 	log.Println("ACCOUNT_ID:", ACCOUNT_ID)
-	log.Println("ROLE_NAME:", ROLE_NAME)
+	// log.Println("ROLE_NAME:", ROLE_NAME)
 	log.Println("QUEUE_NAME:", QUEUE_NAME)
 
-	AWS_ARN = "arn:aws:iam::" + ACCOUNT_ID + ":role/" + ROLE_NAME
+	// AWS_ARN = "arn:aws:iam::" + ACCOUNT_ID + ":role/" + ROLE_NAME
 	qURL = "https://sqs."+ aws.StringValue(region) + ".amazonaws.com/" + ACCOUNT_ID + "/" + QUEUE_NAME
 	
 
@@ -49,9 +49,8 @@ func init() {
 	
 	IntervalInDuration := time.Duration(*ParamFlushInterval) * time.Second
 	sess := session.Must(session.NewSession(&aws.Config{Region: region}))
-	creds := stscreds.NewCredentials(sess, AWS_ARN)
-	client := kinesis.New(sess, &aws.Config{Credentials: creds})
-	svc = sqs.New(sess, &aws.Config{Credentials: creds})
+	client := kinesis.New(sess)
+	svc = sqs.New(sess)
 
 
 

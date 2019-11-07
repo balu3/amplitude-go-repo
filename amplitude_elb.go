@@ -1,7 +1,7 @@
 package main
 
 import (
-	"life360_rawdata_collector/internal/event"
+	"test_amplitude_go/internal/event"
 	// "updated_amplitude_go/internal/logger"
 	"context"
 	"encoding/json"
