@@ -1,7 +1,7 @@
 FROM golang:1.10
 
-WORKDIR $GOPATH/src/github.com/life360_rawdata_collector
+WORKDIR $GOPATH/src/github.com/test_amplitude_go
 COPY . .
 
-ENTRYPOINT ["./life360_rawdata_collector"]
+ENTRYPOINT ["./test_amplitude_go"]
 
