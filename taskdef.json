@@ -1,0 +1,25 @@
+{
+  "executionRoleArn": "arn:aws:iam::374553884378:role/ecsTaskExecutionRole",
+  "containerDefinitions": [
+      {
+          "name": "amplitude",
+          "image": "<IMAGE1_NAME>",
+          "cpu": 0,
+          "portMappings": [
+              {
+                  "containerPort": 8088,
+                  "hostPort": 8088,
+                  "protocol": "tcp"
+              }
+          ],
+          "essential": true
+      }
+  ],
+  "family": "amplitude-go-task",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": [
+      "FARGATE"
+  ],
+  "cpu": "512",
+  "memory": "1024"
+}
