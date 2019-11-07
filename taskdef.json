@@ -2,7 +2,7 @@
   "executionRoleArn": "arn:aws:iam::374553884378:role/ecsTaskExecutionRole",
   "containerDefinitions": [
       {
-          "name": "amplitude",
+          "name": "life360-cont",
           "image": "<IMAGE1_NAME>",
           "portMappings": [
               {
@@ -14,7 +14,7 @@
           "essential": true
       }
   ],
-  "family": "amplitude-go-task",
+  "family": "life360_rawdata_collector",
   "networkMode": "awsvpc",
   "requiresCompatibilities": [
       "FARGATE"
